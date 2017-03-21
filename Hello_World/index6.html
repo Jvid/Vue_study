@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../node_modules/Vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<ato></ato>
+	</div>
+</body>
+<script type="text/javascript">
+	Vue.component('ato', {
+	  template: '<h1>Hello component</h1>'
+	})
+	new Vue({
+		el:"#app",
+		data:{
+			books:[
+				{name:"Angular",page:200},
+				{name:"Vue",page:300},
+				{name:"React",page:400}
+			]
+		}
+	})
+	
+</script>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../node_modules/Vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<p>{{ message }}</p>
+		<button v-on:click="reWord">Click</button>
+	</div>
+</body>
+<script type="text/javascript">
+	var app = new Vue({
+		el:"#app",
+		data:{
+			message:"Hello Jvid"
+		},
+		methods:{
+			reWord:function(){
+				this.message = this.message.split('').reverse().join("");
+			}
+		}
+	})
+</script>
+</html>

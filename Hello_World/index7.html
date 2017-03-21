@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+	<ol>
+		<ato v-for="x in books" v-bind:todo="x"></ato>
+	</ol>
+	</div>
+	
+</body>
+<script type="text/javascript">
+	Vue.component('ato',{
+		props:['todo'],
+		template:'<li>{{todo.name+","+todo.page}}</li>'
+	});
+	new Vue({
+		el:"#app",
+		data:{
+			books:[
+				{name:"Angular",page:200},
+				{name:"Vue",page:300},
+				{name:"React",page:400}
+			]
+		}
+	})
+
+
+</script>
+</html>

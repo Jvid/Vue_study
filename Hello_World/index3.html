@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<span v-bind:title="message">鼠标悬停显示title</span>
+		<p v-if="seen">You can see me</p>
+		<p v-if="unseen">You can't see me</p>
+		<ul>
+			<li v-for="x in frames">{{ x.name + ',' + x.page }}</li>
+		</ul>
+	</div>
+</body>
+<script type="text/javascript">
+	var app = new Vue({
+		el:"#app",
+		data:{
+			message : "页面加载时间是"+ new Date(),
+			seen:true,
+			unseen:false,
+			frames:[
+				{name:"Angular",page:300},
+				{name:"Vue",page:290},
+				{name:"React",page:400}
+			]
+		}
+	})
+</script>
+</html>
