@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<h3>.number将输入内容转化为数字，如果转化结果是NaN返回原值</h3>
+		<input type="number" v-model="num2">
+		<p>没有加修饰符.number------>{{num2}}------{{typeof(num2)}}</p>
+		<input type="number" v-model.number="num">
+		<p>加修饰符.number------>{{num}}-------{{typeof(num)}}</p>
+		<h3>.trim去掉头尾的空格</h3>
+		<input type="text" v-model="str">
+		<p>加修饰符.trim------>{{str}}-------{{str.length}}</p>
+		<input type="text" v-model.trim="str2">
+		<p>加修饰符.trim------>{{str}}-------{{str2.length}}</p>
+	</div>
+</body>
+<script type="text/javascript">
+	var vm = new Vue({
+		el:"#app",
+		data:{
+			num:0,
+			num2:0,
+			str:"a",
+			str2:"a"
+		}
+	})
+</script>
+</html>

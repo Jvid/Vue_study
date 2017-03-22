@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<ul>
+			<li v-for="(n,index) in numbers" :key="index">{{index +''+ n }}</li>
+		</ul>
+	</div>
+	<div id="app2">
+		<ul>
+			<li v-for="n in evenNumbers">{{ n }}</li>
+		</ul>
+	</div>
+	<div id="app3">
+		<ul>
+			<li v-for="n in even(numbers)">{{ n }}</li>
+		</ul>
+	</div>
+	<div id="app4">
+		<ul>
+			<li v-for="n in numbers">{{ even(n) }}</li>
+		</ul>
+	</div>
+</body>
+<script type="text/javascript">
+	var vm = new Vue({
+		el:"#app",
+		data:{
+			numbers:[1,2,3,4,5,6,6,5,4,4]
+		}
+	})
+	var vm = new Vue({
+		el:"#app2",
+		data:{
+			numbers:[1,2,3,4,4,5,6,7]
+		},
+		computed:{
+			evenNumbers:function(){
+				return this.numbers.filter(function(number){
+					return number %2 === 0;
+				})
+			}
+		}
+	})
+	var vm3 = new Vue({
+		el:"#app3",
+		data:{
+			numbers:[1,2,3,4,5,6,6,3,7,77,8,26]
+		},
+		methods:{
+			even:function(nums){
+				return nums.filter(function(num){
+					return num % 2 == 0
+				})
+			}
+		}
+	})
+	var vm = new Vue({
+		el:"#app4",
+		data:{
+			numbers:[1,2,3,4,5,66,77,65,4,3]
+		},
+		methods:{
+			even:function(num){
+				if(num % 2 == 0){
+					return num;
+				}
+			}
+		}
+	})
+</script>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id="app"><button v-on:click="say('Hello',$event)">Say Hello</button></div>
+</body>
+<script type="text/javascript">
+	var vm = new Vue({
+		el:"#app",
+		methods:{
+			say:function(text,event){
+				alert("Hello");
+				console.log(event)
+			}
+		}
+	})
+</script>
+</html>

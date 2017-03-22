@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<p :style="{color:fontColor,fontSize:fontSize+'px'}">I am a test</p>
+	</div>
+	<div id="app2">
+		<p :style="styleObject">I am a another test</p>
+	</div>
+	<div id="app3">
+		<p :style="[baseStyles,overStyles]">I am also a test</p>
+	</div>
+</body>
+<script type="text/javascript">
+	var vm = new Vue({
+		el:"#app",
+		data:{
+			fontColor:"red",
+			fontSize:30
+		}
+	})
+	var vm2 = new Vue({
+		el:"#app2",
+		data:{
+			styleObject:{
+				color:"green",
+				fontSize:"30px"
+			}
+		}
+	})
+	var vm3 = new Vue({
+		el:"#app3",
+		data:{
+			baseStyles:{
+				color:"yellow",
+				fontSize:"30px"
+			},
+			overStyles:{
+				width:"300px",
+				height:"50px",
+				border:"1px solid brown"
+			}
+		}
+	})
+</script>
+</html>
