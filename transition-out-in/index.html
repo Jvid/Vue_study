@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		html,body{
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+		}
+		#app{
+			margin: 80px 0 0 200px;
+
+		}
+		button{
+			width: 50px;
+			height: 30px;
+			
+		}
+		.slide-enter-active, .slide-leave-active {
+		  transition: opacity .3s ease;
+		}
+		.slide-enter, .slide-leave-active {
+		  opacity: 0;
+		}
+	</style>
+	<script type="text/javascript" src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<transition name="slide" model="out-in">
+			<button v-if="show" @click="show = !show">ON</button>
+			<button v-else="show" @click="show = !show">OFF</button>
+		</transition>
+	</div>
+</body>
+<script type="text/javascript">
+	new Vue({
+		el:"#app",
+		data:{
+			show:true
+		}
+	})
+</script>
+</html>

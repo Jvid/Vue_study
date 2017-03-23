@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.fade-enter-active{
+			transition:all linear .3s;
+		}
+		.fade-leave-active{
+			transition:all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+		}
+		.fade-enter,.fade-leave-active{
+			transform: translateX(10px);
+			opacity: 0;
+		}
+	
+	</style>
+	<script type="text/javascript" src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id="demo">
+		<button @click="show = !show">Toggle</button>
+		<transition name="fade">
+			<p v-if="show">Hello Jvid</p>
+		</transition>	
+	</div>
+</body>
+<script type="text/javascript">
+	new Vue({
+		el:"#demo",
+		data:{
+			show:true
+		}
+	})
+</script>
+</html>
