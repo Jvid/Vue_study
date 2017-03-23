@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../node_modules/vue/dist/vue.js"></script>
+	<script type="text/javascript" src="../node_modules/vue-router/dist/vue-router.js"></script>
+</head>
+<body>
+	<div id="app">
+		<router-link to="/user/foo">/user/foo</router-link>
+		<router-link to="/user/foo/profile">/user/foo/profile</router-link>
+	</div>
+</body>
+<script type="text/javascript">
+	var UserHome = {template:"<div>Home</div>"}
+	var UserProfile = {template:"<div>Profile</div>"}
+	var UserPosts = {template:"<div>Posts</div>"}
+
+	var router = new VueRouter()
+
+</script>
+</html>

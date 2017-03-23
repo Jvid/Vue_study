@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.router-link-active{
+			color:red;
+		}
+	</style>
+	<script type="text/javascript" src="../node_modules/vue/dist/vue.js"></script>
+	<script type="text/javascript" src="../node_modules/vue-router/dist/vue-router.js"></script>
+</head>
+<body>
+	<div id="app">
+		<h1 :style="navStyle">This is a test for vue-router</h1>
+		<p>
+			<router-link to="/jing">Jing page</router-link>
+			<router-link to="/jvid">Jvid page</router-link>
+		</p>
+		<router-view></router-view>
+	</div>
+</body>
+<script type="text/javascript">
+	var jing = {template:'<div>This is Jing page</div>'};
+	var jvid = {template:'<div>This is Jvid page</div>'};
+
+	var routes = [
+		{path:'/jing',component:jing},
+		{path:'/jvid',component:jvid}
+	]
+
+	var router = new VueRouter({
+		routes
+	});
+
+	var app = new Vue({
+		router,
+		data:{
+			navStyle:{
+				color:'cyan',
+				fontSize:'20px'
+			}
+		}
+	}).$mount('#app')
+</script>
+</html>

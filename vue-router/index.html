@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.nomal{
+			color:#2b2b2b;
+			font-size: 12px;
+		}
+		.router-link-active{
+			color: red;
+			font-size: 16px;
+		}
+	</style>
+	<script type="text/javascript" src="../node_modules/vue/dist/vue.js"></script>
+	<script type="text/javascript" src="../node_modules/vue-router/dist/vue-router.js"></script>
+</head>
+<body>
+	<div id="app">
+		<h1>Hello vue-router</h1>
+		<p>
+			<router-link to="/jing" class="nomal" >Go to jing</router-link>
+			<router-link to="/duo" class="nomal" >Go to duo</router-link>
+		</p>
+		<router-view></router-view>
+	</div>
+</body>
+<script type="text/javascript">
+	var Jing = {template:'<div>I am the jing page</div>'}
+	var Duo = {template:'<div>I am the duo page</div>'}
+
+	var routes = [
+		{path:'/jing',component:Jing},
+		{path:'/duo',component:Duo}
+	]
+
+	var router = new VueRouter({
+		// routes:routes
+		routes//缩写
+	})
+	var app = new Vue({
+		router
+	}).$mount('#app')
+
+</script>
+</html>
