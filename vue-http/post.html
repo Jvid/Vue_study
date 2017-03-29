@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		img{
+			width: 200px;
+		}
+	</style>
+	<script type="text/javascript" src="../node_modules/vue/dist/vue.js"></script>
+	<script type="text/javascript" src="../node_modules/vue-resource/dist/vue-resource.js"></script>
+</head>
+<body>
+	<div id="box">
+		<input type="button" value="按钮" @click="postData">
+	</div>
+</body>
+<script type="text/javascript">
+	function aca(){
+	    var b = Math.floor(Math.random()*10);
+	    return Math.floor(Math.random()*89 + 10)+Date.parse(new Date()).toString().substr(2)+ b.toString() + (9-b)+Math.floor(Math.random()*899 + 100);
+	}
+	new Vue({
+		el:'#box',
+		data:{
+			myData:[]
+		},
+		methods:{
+			postData:function(){
+				this.$http.post(
+					'http://api.tigerz.nz/tigerspring/rest/getNearbyHouse',
+					JSON.stringify({'basePoint':[174.719023717, -36.9190613333]}),
+					{
+						headers: {'Content-Type':'application/json;charset=utf-8','Accept-Coding':aca()},
+						emulateJSON:true
+					})
+				.then(function(res){
+					console.log(res.data)
+				})
+			}
+		}
+	})
+</script>
+</html>

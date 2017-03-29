@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../node_modules/vue/dist/vue.js"></script>
+	<script type="text/javascript" src="../node_modules/vue-resource/dist/vue-resource.js"></script>
+</head>
+<body>
+	<div id="box">
+		<input type="button" value="按钮" @click="getData">
+	</div>
+</body>
+<script type="text/javascript">
+	new Vue({
+		el:'#box',
+		data:{
+
+		},
+		methods:{
+			getData:function(){
+				this.$http({
+					url:'http://api.tigerz.nz/tigerspring/rest/getGeneralHouseBaseInfo/580711fa4860e40bb23cbe03/en',
+					method:'GET'
+				}).then(function(res){
+					console.log(res);
+					console.log(res.data)
+				},function(){
+
+				})
+			}
+		}
+	})
+</script>
+</html> 

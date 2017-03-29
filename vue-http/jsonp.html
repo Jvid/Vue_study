@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../node_modules/vue/dist/vue.js"></script>
+	<script type="text/javascript" src="../node_modules/vue-resource/dist/vue-resource.js"></script>
+</head>
+<body>
+	<div id="box">
+		<input type="text" @keyup="jsonpData" v-model="val">
+	</div>
+</body>
+<script type="text/javascript">
+	new Vue({
+		el:'#box',
+		data:{
+			val:'',
+			myData:[]	
+		},
+		methods:{
+			jsonpData:function(){
+                this.$http.jsonp('https://sug.so.360.cn/suggest',{
+                    word:this.val
+                },{
+                    jsonp:'callback'
+                }).then(function(res){
+                    console.log(res.data.s)
+                },function(res){
+                    // alert(res.status);
+                });
+            }
+		}
+	})
+</script>
+</html>
