@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0
+		}
+		#app{
+			width: 800px;
+			height: 300px;
+			margin: 20px auto;
+			border: 1px solid brown;
+		}
+		.nav{
+			width: 300px;
+			height: 50px;
+			margin: 0 auto;
+		}
+		.navItem{
+			float: left;
+			padding: 3px 15px;
+			border:1px solid gray; 
+			color:#2b2b2b;
+			font-size:15px;
+			text-decoration: none;
+		}
+		.router-link-active{
+			color:cyan;
+		}
+	</style>
+</head>
+<body>
+<div id="app">
+<div class="nav">
+	<!-- <router-link to="/school/pubilc/3" class="navItem">public</router-link>
+	<router-link to="/school/private/5" class="navItem">private</router-link> -->
+	<router-link :to="ro" class="navItem">school</router-link>
+</div>
+<div class="main">
+	<router-view></router-view>
+</div>
+</div>
+</body>
+<script type="text/javascript" src="../../node_modules/vue/dist/vue.js"></script>
+<script type="text/javascript" src="../../node_modules/vue-router/dist/vue-router.js"></script>
+<script type="text/javascript">
+	var school = {
+		template:
+		`<div>
+			<router-link :to="{name:'pu'}">public</router-link>
+			<router-link :to="{name:'pr'}">private</router-link>
+			<router-view></router-view>
+		</div>`
+	}
+	var pub = {
+		template:`<p>I am the public school</p>`
+	}
+	var pri = {
+		template:`<p>I am the private school</p>`
+	}
+	var router = new VueRouter({
+		routes:[
+		{
+			path:'/school',component:school,
+			name:'sc',
+			children:[
+			{
+				path:'',
+				component:school
+			},
+			{
+				path:'/school/public',
+				name:'pu',
+				component:pub
+			},
+			{
+				path:'/school/private',
+				name:'pr',
+				component:pri
+			}
+			]
+		}]
+	});
+	var app = new Vue({
+		router,
+		data:{
+			ro : {name:'sc'}
+		}
+	}).$mount('#app')
+</script>
+</html>

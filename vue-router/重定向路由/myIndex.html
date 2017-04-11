@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app"></div>
+
+</body>
+<script type="text/javascript" src="../../node_modules/vue/dist/vue.js"></script>
+<script type="text/javascript" src="../../node_modules/vue-router/dist/vue-router.js"></script>
+<script type="text/javascript">
+	var hashPage = {template:'<p>我是通过hash值(#a)跳转的</p>'};
+	var queryPage = {template:'<p>我是通过问号后面的参数跳转的</p>'};
+	var paramsPage = {template:'<p>我是通过Vue传参数跳转的 {{$route.params.id}}是参数</p>'};
+	var deafultPage = {template:'<p>我是默认页面</p>'};
+	var redirectPage = {template:'<p>我是普通的redirect页面</p>'};
+	var noPage = {template:'<p>我是redirect找不到页面</p>'}
+
+	var router = new VueRouter({
+		routes:[
+			{
+				path:'/',
+				name:'de',
+				component:deafultPage
+			},
+			{path:'/jvid',component:queryPage},
+			{path:'/has',component:hashPage},
+			{path:'/no',component:noPage},
+			{path:'/vueparam/:id',component:paramsPage},
+			{ path: '/jugePage', redirect: 'de' },
+			{ path: '/jugePage/:id?',
+		      redirect: function(to) {
+		        // const { hash, params, query } = to
+		        // console.log(to)
+		        var hash = to.hash,params = to.params,query = to.query;
+		        console.log(hash)
+		        if (query.a === 'jvid') {
+		          return { path: '/jvid', query: null }
+		        }
+		        if (hash === '#a') {
+		          return '/has'
+		        }
+		        if (params.id) {
+		          return '/vueparam/:id'
+		        } else {
+		          return '/no'
+		        }
+		      }
+		    },
+			{ path: '/jugePage/:id?',
+		      redirect: function(to) {
+		        // const { hash, params, query } = to
+		        // console.log(to)
+		        var hash = to.hash,params = to.params,query = to.query;
+		        console.log(hash)
+		        if (query.a === 'jvid') {
+		          return { path: '/jvid', query: null }
+		        }
+		        if (hash === '#a') {
+		          return '/has'
+		        }
+		        if (params.id) {
+		          return '/vueparam/:id'
+		        } else {
+		          return '/no'
+		        }
+		      }
+		    },
+		    { path: '*', redirect: '/' },
+		]
+	})
+	new Vue({
+		router,
+		el:'#app',
+		template:`<div>
+			<router-link to="/jugePage">redirect默认页面</router-link>
+			<router-link to="/jugePage#a">hash值页面</router-link>
+			<router-link to="/jugePage?a=jvid">问号后参数页</router-link>
+			<router-link to="/jugePage/jingduo">Vue参数</router-link>
+			<router-link to="/hahah">redirect找不到页面</router-link>
+			<router-view></router-view></div>
+		`
+	})
+</script>
+</html>

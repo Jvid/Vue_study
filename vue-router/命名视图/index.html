@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../../node_modules/vue/dist/vue.js"></script>
+	<script type="text/javascript" src="../../node_modules/vue-router/dist/vue-router.js"></script>
+</head>
+<body>
+	<div id="app">
+		<router-link to="/home">home</router-link>
+		<router-link to="/list">list</router-link>
+
+
+		<router-view></router-view>
+		<router-view name="a"></router-view>
+		<router-view name="b"></router-view>
+	</div>
+</body>
+<script type="text/javascript">
+	const homeNav = {template:'<p>this is home nav</p>'}
+	const homeSide = {template:'<p>this is home side</p>'}
+	const homeMain = {template:'<p>this is home main</p>'}
+
+	const listNav = {template:'<p>this is list nav</p>'}
+	const listSide = {template:'<p>this is list side</p>'}
+	const listMain = {template:'<p>this is list main</p>'}
+
+	const router = new VueRouter({
+		routes: [
+			{
+				path:'/',
+				 components: {
+			        default: homeNav,
+			        a: homeSide,
+			        b: homeMain
+			      }
+			},
+		    { path: '/home',
+		      components: {
+		        default: homeNav,
+		        a: homeSide,
+		        b: homeMain
+		      }
+		    },
+		    {
+		      path: '/list',
+		      components: {
+		        default: listNav,
+		        a: listSide,
+		        b: listMain
+		      }
+		    }
+		 ]
+	})
+
+	new Vue({
+		router,
+		el:'#app',
+
+	})
+
+</script>
+</html>
